@@ -50,20 +50,22 @@ public class SubmissionController {
 
             String answer = answers.get(String.valueOf(q.getId()));
 
-            if (answer != null &&
-                    answer.equalsIgnoreCase(q.getCorrectAnswer())) {
+            if (answer != null
+                    && q.getCorrectAnswer() != null
+                    && answer.equalsIgnoreCase(q.getCorrectAnswer())) {
                 score += q.getMarks();
             }
         }
 
-        // Save the exam result to the database
+        // Create and save the exam result
         Result result = new Result();
         result.setExamId(id);
         result.setStudentName("Student");
         result.setScore(score);
         result.setTotalMarks(total);
         result.setTotalQuestions(list.size());
-        resultR.save(result);
+
+        results.save(result);
 
         // Return the result to the frontend
         return ResponseEntity.ok(Map.of(
