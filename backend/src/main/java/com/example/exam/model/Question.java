@@ -1,0 +1,40 @@
+package com.example.exam.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
+@Entity
+public class Question {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "exam_id", nullable = false)
+    private Exam exam;
+    @NotBlank private String text;
+    @NotBlank private String optionA;
+    @NotBlank private String optionB;
+    @NotBlank private String optionC;
+    @NotBlank private String optionD;
+    @NotBlank private String correctAnswer;
+    private int marks = 1;
+
+    public Question() {}
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public Exam getExam() { return exam; }
+    public void setExam(Exam exam) { this.exam = exam; }
+    public String getText() { return text; }
+    public void setText(String text) { this.text = text; }
+    public String getOptionA() { return optionA; }
+    public void setOptionA(String optionA) { this.optionA = optionA; }
+    public String getOptionB() { return optionB; }
+    public void setOptionB(String optionB) { this.optionB = optionB; }
+    public String getOptionC() { return optionC; }
+    public void setOptionC(String optionC) { this.optionC = optionC; }
+    public String getOptionD() { return optionD; }
+    public void setOptionD(String optionD) { this.optionD = optionD; }
+    public String getCorrectAnswer() { return correctAnswer; }
+    public void setCorrectAnswer(String correctAnswer) { this.correctAnswer = correctAnswer; }
+    public int getMarks() { return marks; }
+    public void setMarks(int marks) { this.marks = marks; }
+}
