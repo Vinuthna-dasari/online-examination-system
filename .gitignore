@@ -4,3 +4,6 @@ backend/target/
 backend/data/
 .env
 .DS_Store
+
+/backend/backend-error.txt
+/backend/error.txt
