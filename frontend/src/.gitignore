@@ -22,3 +22,5 @@ backend/*.trace.db
 .idea/
 .DS_Store
 Thumbs.db
+backend/backend-error.txt
+backend/error.txt
